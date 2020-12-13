@@ -1,0 +1,116 @@
+<html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Tugas Unsigned</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/organize.css">
+    <body>
+        <div id="datatugas">
+        <header class="w3-container w3-pale-red w3-center" style="padding:30px 10px">
+            <div style="color: black;" class="container">
+                <h2 style="color:black;">Data Tugas</h2>
+                <table class="table">
+                    <thead>
+                        <tr bgcolor = "#FDFA00">
+                            <th>ID</th>
+                            <th>Mata Kuliah</th>
+                            <th>Deskripsi</th>
+                            <th>Deadline</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in data %}
+                        <tr>
+                            <td bgcolor = "#FFFFFF">{{row[0]}}</td>
+                            <td bgcolor = "#FFFFFF">{{row[1]}}</td>
+                            <td bgcolor = "#FFFFFF">{{row[2]}}</td>
+                            <td bgcolor = "#FFFFFF">{{row[3]}}</td>
+                            <td bgcolor = "#FFFFFF">{{row[4]}}</td>
+                        </tr>
+                    {% endfor %}    
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <br>
+            <p>Tambah Tugas</p>
+            <input type="text" style = "color:black" placeholder="MATA_KULIAH" id="mata_kuliah">
+            <input type="text" style = "color:black" placeholder="DESKRIPSI" id="deskripsi"><br>
+            <input type="text" style = "color:black" placeholder="DEADLINE" id="deadline">
+            <input type="text" style = "color:black" placeholder="STATUS" id="status"><br>
+            <button onclick="TAMBAH()" style = "color:rgb(252, 69, 69)" >TAMBAH</button>
+            <br>
+            <br>
+            <p>Update Tugas</p>
+            <input type="text" style = "color:black" placeholder="id" id="id">
+            <input type="text" style = "color:black" placeholder="STATUS" id="statusbaru"><br>
+            <button onclick="UPDATE()" style = "color:rgb(252, 69, 69)">UPDATE</button>
+            <br>
+            <br>
+            <p>Hapus Tugas</p>
+            <input type="text" style = "color:black" placeholder="id" id="idhapus"><br>
+            <button onclick="HAPUS()" style = "color:rgb(252, 69, 69)">HAPUS</button>
+            
+        </body>
+<script>
+    function TAMBAH(){
+        $.ajax({
+            url: '/create',
+            method: 'post',
+            data:{
+                'mata_kuliah': $('#mata_kuliah').val(),
+                'deskripsi': $('#deskripsi').val(),
+                'deadline': $('#deadline').val(),
+                'status': $('#status').val(),
+            },
+            success: function (response) {
+                console.log(response)
+                window.location.reload()
+            },
+            error: function (response) {
+                console.log(response)
+            }
+        })
+    }
+    function UPDATE(){
+        $.ajax({
+            url: '/update',
+            method: 'put',
+            data:{
+                'id': $('#id').val(),
+                'status': $('#statusbaru').val(),
+            },
+            success: function (response) {
+                console.log(response)
+                window.location.reload()
+            },
+            error: function (response) {
+                console.log(response)
+            }
+        })
+    }
+    function HAPUS(){
+        $.ajax({
+            url: '/delete',
+            method: 'delete',
+            data:{
+                'id': $('#idhapus').val()
+            },
+            success: function (response) {
+                console.log(response)
+                window.location.reload()
+            },
+            error: function (response) {
+                console.log(response)
+            }
+        })
+    }
+</script>
+</html>
