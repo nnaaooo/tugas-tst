@@ -1,12 +1,12 @@
 version: "2"
 services:
-  app:
+  app_nao:
     build: .
     links:
-      - db
+      - db_nao
     ports:
-      - "5000:5000"
-  db:
+      - "1308:5000"
+  db_nao:
     image: mysql:5.7
     ports:
       - "32000:3306"
