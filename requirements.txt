@@ -1,6 +1,6 @@
 Flask==1.1.2
 Flask-MySQL==1.5.1
-Flask-OAuth==0.13
+Flask-OAuth @ git+https://github.com/mitsuhiko/flask-oauth@af6432621a9add5e55b0d7638e1380f66f3d4ed0
 Werkzeug==0.16.0
 oauth2==1.9.0.post1
 oauthlib==3.0.1
