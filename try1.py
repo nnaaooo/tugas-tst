@@ -12,9 +12,9 @@ app = Flask(__name__)
 mysql = MySQL()
 app.secret_key = 'secretkey'
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
-app.config['MYSQL_DATABASE_DB'] = 'tst'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
+app.config['MYSQL_DATABASE_DB'] = 'tstnaomi'
+app.config['MYSQL_DATABASE_HOST'] = '172.24.0.2'
 app.config['MYSQL_DATABASE_PORT'] = 3306
 # app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 

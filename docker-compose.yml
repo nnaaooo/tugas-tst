@@ -2,17 +2,5 @@ version: "2"
 services:
   app_nao:
     build: .
-    links:
-      - db_nao
     ports:
       - "1308:5000"
-  db_nao:
-    image: mysql:5.7
-    restart: unless-stopped
-    ports:
-      - "31000:3306"
-    environment:
-      MYSQL_DATABASE: tst
-      MYSQL_ROOT_PASSWORD: root
-    volumes:
-      - ./db:/docker-entrypoint-initdb.d/:ro
