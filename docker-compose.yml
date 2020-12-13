@@ -9,7 +9,7 @@ services:
   db_nao:
     image: mysql:5.7
     ports:
-      - "32000:3306"
+      - "31000:3306"
     environment:
       MYSQL_DATABASE: tst
       MYSQL_ROOT_PASSWORD: root
