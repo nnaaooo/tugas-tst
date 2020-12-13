@@ -8,6 +8,7 @@ services:
       - "1308:5000"
   db_nao:
     image: mysql:5.7
+    restart: unless-stopped
     ports:
       - "31000:3306"
     environment:
